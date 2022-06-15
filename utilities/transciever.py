@@ -2,6 +2,7 @@ from rflib import SYNCM_16_of_16, RfCat, MOD_ASK_OOK
 
 from const.bit_timings import freq, baud
 from const.sync_bits import SIGNATURE_TX
+from model.pox_advertise import PoxAdvertise
 
 
 def get_transciever() -> RfCat:
@@ -21,6 +22,11 @@ def rx_packet(d: RfCat) -> bytes:
     pkt, _ = d.RFrecv(timeout=30000)
     d.setModeIDLE()
     return pkt
+
+
+def rx_pox(d: RfCat) -> PoxAdvertise:
+    pkt = rx_packet(d)
+    return PoxAdvertise.from_encoded_bytes(pkt)
 
 
 def tx_packet(d: RfCat, packet: bytes) -> None:
