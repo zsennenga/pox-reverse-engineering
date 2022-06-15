@@ -1,0 +1,11 @@
+matplotlib
+pandas
+construct
+bitstring
+crc16
+rfcat
+libusb
+pyusb
+pyreadline
+PySide2
+
