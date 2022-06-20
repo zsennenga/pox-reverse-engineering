@@ -11,6 +11,7 @@ def get_transciever() -> RfCat:
     d.setMdmSyncWord(0b1010101010101100)
     d.setMdmModulation(MOD_ASK_OOK)
     d.setMdmDRate(baud)
+    d.setModeIDLE()
 
     return d
 
